@@ -1,0 +1,26 @@
+{
+  "name": "elastic-sink-lectures-only",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "tasks.max": "1",
+    "topics": "postgres_server.public.material_of_lecture",
+    "connection.url": "http://elasticsearch:9200",
+    "connection.username": "elastic",
+    "connection.password": "secret",
+    "transforms": "unwrap,extractKey",
+    "transforms.unwrap.type": "io.debezium.transforms.ExtractNewRecordState",
+    "transforms.unwrap.drop.tombstones": "false",
+    "transforms.extractKey.type": "org.apache.kafka.connect.transforms.ExtractField$Key",
+    "transforms.extractKey.field": "id",
+    "key.ignore": "false",
+    "schema.ignore": "true",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "behavior.on.null.values": "delete",
+    "write.method": "upsert",
+    "index": "material_of_lecture",
+    "type.name": "_doc"
+  }
+}
