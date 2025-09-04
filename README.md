@@ -45,27 +45,29 @@ Python 3.8+
 **Installation**
 1.Clone the repository
 
-```git clone <https://github.com/INaggy/Project-with-Kafka-connect>```
-```cd Project-with-Kafka-connect```
+```
+git clone <https://github.com/INaggy/Project-with-Kafka-connect>
+cd Project-with-Kafka-connect
+```
 
 2.Start all services
 
-docker-compose up -d
+```docker-compose up -d```
 
 3.Initialize the database schema
 
-python postgres.py
+```python postgres.py```
 
 4.Generate sample data
 
-python attendance_generator.py
+```python attendance_generator.py```
 
 5.Synchronize data to all systems
 
-python total_generator.py
+```python total_generator.py```
 
 6.Configure Kafka Connect connectors
-
+```
 # Debezium PostgreSQL connector
 curl -X POST -H "Content-Type: application/json" --data @debezium.json http://localhost:8083/connectors
 
@@ -77,40 +79,40 @@ curl -X POST -H "Content-Type: application/json" --data @neo4j_sink.json http://
 
 # Redis sink connector
 curl -X POST -H "Content-Type: application/json" --data @redis_sink.json http://localhost:8083/connectors
-
+```
 7.Start the microservices
-
+```
 # Each service runs in its own container via docker-compose
 docker-compose up gateway lab1 lab2 lab3
-
+```
 🔌 **API Endpoints**
 **Authentication**
-
+```
 curl -X POST http://localhost:1337/auth/login \
   -H "Content-Type: application/json" \
   -d '{"username": "user", "password": "user"}'
-
+```
 **Lab1 - Attendance Report**
-
+```
 curl -X POST http://localhost:1337/api/lab1/report \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <JWT_TOKEN>" \
   -d '{"term": "physics", "start_date": "2025-09-01", "end_date": "2025-12-31"}'
-
+```
 **Lab2 - Audience Report**
-
+```
 curl -X POST http://localhost:1337/api/lab2/audience_report \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <JWT_TOKEN>" \
   -d '{"year": 2025, "semester": 1}'
-
+```
 **Lab3 - Group Report**
-
+```
 curl -X POST http://localhost:1337/api/lab3/group_report \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <JWT_TOKEN>" \
   -d '{"group_id": 1}'
-
+```
 🔧 **Kafka Connect Configuration**
 The project includes four main connectors:
 
@@ -249,27 +251,27 @@ Database Connections:
 
 🎯 **Usage Examples**
 **Search Students**
-
+```
 from redis_module import StudentSearch
 
 searcher = StudentSearch()
 students = searcher.search_by_name("Ivanov")
 students = searcher.search_by_group("CS-101")
-
+```
 **Query Lecture Materials**
-
+```
 from Lab1 import LectureMaterialSearcher
 
 searcher = LectureMaterialSearcher()
 results = searcher.search("quantum physics")
-
+```
 **Generate Reports**
-
+```
 from Lab1 import AttendanceFinder
 
 finder = AttendanceFinder()
 report = finder.find_worst_attendees(lecture_ids, top_n=10)
-
+```
 🐛 **Troubleshooting**
 **Common Issues**
 1.Connection refused errors
