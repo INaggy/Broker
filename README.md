@@ -45,8 +45,8 @@ Python 3.8+
 **Installation**
 1.Clone the repository
 
-git clone <https://github.com/INaggy/Project-with-Kafka-connect>
-cd Project-with-Kafka-connect
+```git clone <https://github.com/INaggy/Project-with-Kafka-connect>```
+```cd Project-with-Kafka-connect```
 
 2.Start all services
 
