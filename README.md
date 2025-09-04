@@ -144,51 +144,6 @@ The project includes four main connectors:
 
 • Enables quick student lookup and search
 
-📁 **Project Structure**
-
-Project-with-Kafka-connect/
-├── gateway/                 # API Gateway service
-│   ├── gateway.py          # Main gateway application
-│   ├── requirements.txt    # Python dependencies
-│   └── Dockerfile          # Container configuration
-├── lab1_service/           # Attendance reporting service
-│   ├── app.py             # Flask application
-│   ├── Lab1.py            # Business logic
-│   ├── requirements.txt   # Dependencies
-│   └── Dockerfile         # Container config
-├── lab2_service/           # Audience analytics service
-│   ├── app.py             # Flask app
-│   ├── Lab2.py            # Business logic
-│   ├── neo4j_sync.py      # Neo4j synchronization
-│   ├── requirements.txt   # Dependencies
-│   └── Dockerfile         # Container config
-├── lab3_service/           # Group reporting service
-│   ├── app.py             # Flask app
-│   ├── Lab33.py           # Business logic
-│   ├── neo4j_sync.py      # Neo4j operations
-│   ├── redis_module.py    # Redis utilities
-│   ├── requirements.txt   # Dependencies
-│   └── Dockerfile         # Container config
-├── data/                   # Configuration and data files
-│   ├── config/
-│   │   └── data_config.json
-│   ├── debezium.json      # PostgreSQL CDC connector
-│   ├── elastic_sink.json  # Elasticsearch connector
-│   ├── neo4j_sink.json    # Neo4j connector
-│   └── redis_sink.json    # Redis connector
-├── scripts/                # Data generation and sync scripts
-│   ├── postgres.py        # Database schema setup
-│   ├── attendance_generator.py # Sample data generation
-│   ├── total_generator.py # Full synchronization
-│   ├── mongo_sync.py      # MongoDB synchronization
-│   ├── neo4j_sync.py      # Neo4j synchronization
-│   ├── redis_sync.py      # Redis synchronization
-│   ├── elastic_gen_sync.py # Elasticsearch sync
-│   ├── elastic_output.py  # Elasticsearch utilities
-│   └── ClearDB_data.py    # Database cleanup
-├── docker-compose.yml      # Multi-container setup
-└── README.md
-
 🎯 **Sample Data**
 The system includes comprehensive sample data for Russian universities:
 
